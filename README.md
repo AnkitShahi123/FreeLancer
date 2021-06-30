@@ -1,2 +1,2 @@
 # FreeLancer 
-Demo Memeber
+Demo Member
