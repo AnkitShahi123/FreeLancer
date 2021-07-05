@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors());
 
+const db = require("./database/db");
 
 app.listen(89, () => {
   console.log("Server running at 89.");
