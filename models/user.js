@@ -15,7 +15,49 @@ const user = mongoose.model("user", {
   },
   password: {
     type: String,
-    required: true
+    required: true,
+  },
+  address: {
+    type: String,
+    //required: true,
+  },
+  phone: {
+    type: String,
+   // required: true,
+  },
+  age: {
+    type: Number,
+  },
+  photo: {
+    type: String,
+    default: "user.jpg",
+  },
+  role: {
+    type: String,
+    enum: ["Client", "Freelancer", "Admin"],
+    default: "Freelancer",
+  },
+  projects: {
+    type: String,
+  },
+  experience: {
+    type: String,
+  },
+  company: {
+    type: String,
+  },
+  foundedin: {
+    type: String,
+  },
+  userbio: {
+    type: String,
+  },
+  resume: {
+    type: String,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 
