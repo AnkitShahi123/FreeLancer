@@ -1,6 +1,6 @@
 const user = require("../models/user");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs"); //third party
 const { check, validationResult } = require("express-validator");
 
 class AuthController {
@@ -8,10 +8,9 @@ class AuthController {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.status(400).json(errors.array());
+      console.log("not registered");
     } else {
-      if (req.file == undefined) {
-        return res.status();
-      }
+      console.log("register");
 
       const firstname = req.body.firstname;
       const lastname = req.body.lastname;
@@ -26,11 +25,8 @@ class AuthController {
         });
         me.save()
           .then(function (Result) {
-            //success insert
-            res
-              .status(201)
-              .json({ message: "done", success: true });
-            console.log("Status-" + 201 + ": done");
+            res.status(201).json({ message: "Done", success: true });
+            console.log("Status-" + 201 + ":Done");
           })
           .catch(function (e) {
             res.status(500).json({ message: e });
