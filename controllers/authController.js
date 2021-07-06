@@ -36,6 +36,49 @@ class AuthController {
       });
     }
   }
+
+  login(req, res) {
+    const email = req.body.email;
+    const password = req.body.password;
+    console.log(req.body);
+    user
+      .findOne({ email: email })
+      .then(function (userData) {
+        console.log(userData);
+        if (userData === null) {
+          return res.status(401).json({
+            message: "Inavalid Email or Password",
+            success: false,
+          });
+          console.log("Status-" + 401 + ": Login unsucessfull");
+        }
+        bcrypt.compare(password, userData.password, function (err, result) {
+          if (result === false) {
+            return res.status(401).json({
+              message: "Inavalid Email or Password",
+              success: false,
+            });
+            console.log("Status-" + 401 + ": Login unsucessfull");
+          }
+          const token = jwt.sign({ userID: userData._id }, "secretkey");
+          const id = userData._id;
+          const useremail = userData.email;
+          const firstname = userData.firstname;
+          const lastname = userData.lastname;
+          res.status(200).json({
+            message: "Sucessfull Login ",
+            token: token,
+            success: true,
+            id: id,
+            email: useremail,
+            firstName: firstname,
+            lastName: lastname,
+          });
+          console.log("Status-" + 201 + ": Login sucessfull");
+        });
+      })
+      .catch();
+  }
 }
 
 module.exports = AuthController;

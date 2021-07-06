@@ -11,7 +11,9 @@ const auth = new authController();
 const token = tokenVerification.verifyUser;
 
 //adding register api
-router.post("/user/add",[
+router.post(
+  "/user/add",
+  [
     check("firstname", "First Name must be entered").not().isEmpty(),
     check("lastname", "Last Name must be entered").not().isEmpty(),
     check("email", "Invalid Email").isEmail(),
@@ -21,7 +23,9 @@ router.post("/user/add",[
       max: 16,
     }),
   ],
-auth.register);
+  auth.register
+);
 
+router.post("/user/login", auth.login);
 
 module.exports = router;
