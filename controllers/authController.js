@@ -11,17 +11,27 @@ class AuthController {
       console.log("not registered");
     } else {
       console.log("register");
-
       const firstname = req.body.firstname;
       const lastname = req.body.lastname;
       const email = req.body.email;
       const password = req.body.password;
+      const age = req.body.age;
+      const address = req.body.address;
+      const phone = req.body.phone;
+      //   const path = req.file.path;
+      const role = req.body.role;
+
       bcrypt.hash(password, 10, function (err, hash) {
         const me = new user({
           firstname: firstname,
           lastname: lastname,
           email: email,
           password: hash,
+          age: age,
+          address: address,
+          phone: phone,
+          // photo: path,
+          role: role,
         });
         me.save()
           .then(function (Result) {

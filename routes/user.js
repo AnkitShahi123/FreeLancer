@@ -5,6 +5,7 @@ const tokenVerification = require("../middleware/auth");
 const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
+const upload = require("../middleware/uploads");
 const authController = require("../controllers/authController");
 
 const auth = new authController();
@@ -23,6 +24,7 @@ router.post(
       max: 16,
     }),
   ],
+  upload.single('photo'),
   auth.register
 );
 
