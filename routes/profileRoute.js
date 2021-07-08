@@ -7,6 +7,7 @@ const profileController = require("../controllers/profileController");
 const profile = new profileController();
 
 router.get("/clientProfile",auth.verifyUser,auth.verifyClient,profile.showProfileClient);
+router.get("/freelancerProfile",auth.verifyUser,auth.verifyFreelancer,profile.showProfileFreelancer);
 
 
 module.exports =router;

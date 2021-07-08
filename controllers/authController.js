@@ -10,7 +10,7 @@ class AuthController {
       res.status(400).json(errors.array());
     } else {
       if (req.file == undefined) {
-        console.log("file is undefined")
+        console.log("file is undefined");
         return res.status();
       }
       const firstname = req.body.firstname;
@@ -34,7 +34,8 @@ class AuthController {
           photo: path,
           role: role,
         });
-        all.save()
+        all
+          .save()
           .then(function (Result) {
             res
               .status(201)

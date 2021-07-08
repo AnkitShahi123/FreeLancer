@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
-const app = express();
+
 const db = require("./database/db");
 const user = require("./routes/user");
 const profileRoute = require("./routes/profileRoute");
 
+const app = express();
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 
