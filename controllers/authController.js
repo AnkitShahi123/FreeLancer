@@ -61,7 +61,7 @@ class AuthController {
         console.log(userData);
         if (userData === null) {
           return res.status(401).json({
-            message: "Inavalid Email or Password",
+            message: "Inavalid Emails or Password",
             success: false,
           });
           console.log("Status-" + 401 + ": Login unsucessfull");
