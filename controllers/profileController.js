@@ -62,6 +62,30 @@ class profileController {
         res.status(500).json({ message: e });
       });
   }
+
+  editResume(req, res) {
+    if (req.file == undefined) {
+      return res.status();
+    }
+    const resume = req.file.path;
+    const id = req.params.id;
+    user
+      .findByIdAndUpdate(
+        { _id: id },
+        {
+          resume: resume,
+        }
+      )
+
+      .then(function (result) {
+        res
+          .status(200)
+          .json({ message: "Resume has been updated sucessfully" });
+      })
+      .catch(function (e) {
+        res.status(500).json({ message: e });
+      });
+  }
 }
 
 module.exports = profileController;

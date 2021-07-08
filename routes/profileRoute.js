@@ -28,4 +28,11 @@ router.put(
   profile.editProfileFreelancer
 );
 
+router.put(
+  "/profile/editResume/:id",
+  [check("resume", "You must upload a file before saving.").not().isEmpty()],
+  upload.single("resume"),
+  profile.editResume
+);
+
 module.exports = router;
