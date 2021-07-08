@@ -38,9 +38,8 @@ class profileController {
     const experience = req.body.experience;
     const userbio = req.body.userbio;
     const id = req.params.id;
-
     user
-      .findByIdAndUpdate(
+      .findOneAndUpdate(
         { _id: id },
         {
           firstname: firstname,
@@ -53,7 +52,6 @@ class profileController {
           experience: experience,
         }
       )
-
       .then(function (data) {
         res
           .status(200)
