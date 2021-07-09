@@ -20,6 +20,14 @@ router.get(
   profile.showProfileFreelancer
 );
 
+
+
+router.put(
+  "/profile/editProfileClient/:id",
+  profile.editProfileClient
+);
+
+
 router.put(
   "/profile/editProfileFreelancer/:id",
   [
