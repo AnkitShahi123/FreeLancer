@@ -20,6 +20,6 @@ app.use(cors());
 app.use(user);
 app.use(profileRoute);
 
-app.listen(process.env.PORT||89, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server running at 89.");
 });
