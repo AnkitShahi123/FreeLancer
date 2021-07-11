@@ -52,6 +52,7 @@ class AuthController {
   }
 
   login(req, res) {
+    console.log(req.body)
     const email = req.body.email;
     const password = req.body.password;
     const role = req.body.role;
