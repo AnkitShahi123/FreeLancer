@@ -23,7 +23,7 @@ const user = mongoose.model("user", {
   },
   phone: {
     type: String,
-   // required: true,
+    // required: true,
   },
   age: {
     type: Number,
@@ -36,6 +36,10 @@ const user = mongoose.model("user", {
     type: String,
     enum: ["Client", "Freelancer", "Admin"],
     default: "Freelancer",
+  },
+  education: {
+    type: String,
+    
   },
   projects: {
     type: String,
