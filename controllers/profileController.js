@@ -50,7 +50,6 @@ class profileController {
           userbio: userbio,
           projects: projects,
           company: company,
-        
         }
       )
       .then(function (data) {
@@ -76,7 +75,7 @@ class profileController {
     const userbio = req.body.userbio;
     const id = req.params.id;
     user
-      .findOneAndUpdate(
+      .findByIdAndUpdate(
         { _id: id },
         {
           firstname: firstname,
