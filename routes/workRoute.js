@@ -15,3 +15,5 @@ router.post(
   auth.verifyClient,
   work.addWork
 );
+
+module.exports= router;

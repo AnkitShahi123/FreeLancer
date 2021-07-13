@@ -20,7 +20,7 @@ app.use("/images", express.static(__dirname + "/images"));
 app.use(cors());
 app.use(user);
 app.use(profileRoute);
-// app.use(workRoute);
+app.use(workRoute);
 
 app.listen(process.env.PORT||89, () => {
   console.log("Server running at 89.");
