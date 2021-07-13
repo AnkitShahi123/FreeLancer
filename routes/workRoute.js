@@ -9,11 +9,16 @@ const work = new workController();
 
 router.post(
   "/work/add",
-  [],
   upload.single("photo"),
   auth.verifyUser,
   auth.verifyClient,
   work.addWork
 );
+
+router.delete(
+    "/work/delete/:pid",
+    auth.verifyUser,
+    work.deletework
+  );
 
 module.exports= router;

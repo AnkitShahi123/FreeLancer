@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 
-require('dotenv').config();
+require("dotenv").config();
 
 const cors = require("cors");
 
@@ -22,6 +22,6 @@ app.use(user);
 app.use(profileRoute);
 app.use(workRoute);
 
-app.listen(process.env.PORT||89, () => {
+app.listen(89, () => {
   console.log("Server running at 89.");
 });

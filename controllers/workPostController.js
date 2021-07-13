@@ -2,8 +2,8 @@ const work = require("../models/work");
 
 class workController {
   addWork(req, res) {
-    
     if(req.file==undefined){
+        console.log("routed here");
       return res.status()
     }
     const worktitle = req.body.worktitle;
@@ -27,9 +27,11 @@ class workController {
       .save()
       .then(function (result) {
         res.status(201).json({ message: "work has been added" });
+     
       })
       .catch(function (err) {
         res.status(500).json({ message: err });
+      
       });
   }
 
