@@ -15,10 +15,7 @@ router.post(
   work.addWork
 );
 
-router.delete(
-    "/work/delete/:pid",
-    auth.verifyUser,
-    work.deletework
-  );
+router.delete("/work/delete/:pid", auth.verifyUser, work.deletework);
 
-module.exports= router;
+router.put("/work/update/:id",auth.verifyUser, work.updatework);
+module.exports = router;
