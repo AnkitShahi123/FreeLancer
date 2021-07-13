@@ -32,4 +32,6 @@ router.get("/work/showall", function (req, res) {
       });
   });
 
+  router.get("/work/showSingle/:id", work.getSinglework);
+
 module.exports = router;

@@ -22,6 +22,6 @@ app.use(user);
 app.use(profileRoute);
 app.use(workRoute);
 
-app.listen(89, () => {
+app.listen(process.env.PORT || 89, () => {
   console.log("Server running at 89.");
 });
