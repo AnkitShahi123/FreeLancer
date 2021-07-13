@@ -7,5 +7,11 @@ const upload = require("../middleware/uploads");
 const workController = require("../controllers/workPostController");
 const work = new workController();
 
-router.post("/work/add", [],upload.single('photo'), auth.verifyUser, auth.verifyClient, work.addWork);
-
+router.post(
+  "/work/add",
+  [],
+  upload.single("photo"),
+  auth.verifyUser,
+  auth.verifyClient,
+  work.addWork
+);

@@ -1,4 +1,4 @@
-const job = require("../models/jobmodel");
+const work = require("../models/work");
 
 class workController {
   addWork(req, res) {
