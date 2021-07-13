@@ -73,6 +73,7 @@ class workController {
   }
   
   
+  
   getSinglework(req, res) {
     const id = req.params.id;
     work

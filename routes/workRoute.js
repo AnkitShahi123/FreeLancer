@@ -18,4 +18,18 @@ router.post(
 router.delete("/work/delete/:pid", auth.verifyUser, work.deletework);
 
 router.put("/work/update/:id",auth.verifyUser, work.updatework);
+
+router.get("/work/showall", function (req, res) {
+    works
+      .find()
+      .populate("creator")
+      .then(function (data) {
+        
+        res.status(200).json({success: true, data});
+      })
+      .catch(function (err) {
+        res.status(500).json({ message: err });
+      });
+  });
+
 module.exports = router;
