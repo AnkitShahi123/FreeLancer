@@ -61,33 +61,62 @@ afterAll(async () => {
 
 //USER CLIENT REGISTRATION TESTING
 
+// describe('User Schema test anything', () => { // the code below is for insert testing
+//     it('Add User testing anything', () => {
+//         const register = {
+
+//             'firstname': 'Ankit',
+//             'lastname': 'lama',
+//             'email': 'lama12@gmail.com',
+//             "password": "password2",
+//             "address": "boudha",
+//             "phone": "9869688544",
+//             "age": 22,
+//             "role": "Client",
+//             "projects": "Jobportal",
+//             "Exprience": "2 year",
+//             "company": "Softwaricaedu",
+//             "foundedin": "Nepal",
+//             "userbio": "my name is ankit",
+//             "resume": "ihave",           
+//         };
+
+//         return registration.create(register).then((pro_ret) => {
+//             expect(pro_ret.firstname).toEqual('Ankit');
+//         });
+//     });
+
+// });
+
+
+// //USER FRLANCER REGISTRATION TESTING
+
 describe('User Schema test anything', () => { // the code below is for insert testing
     it('Add User testing anything', () => {
         const register = {
 
-            'firstname': 'Ankit',
-            'lastname': 'lama',
-            'email': 'lama12@gmail.com',
-            "password": "password2",
-            "address": "boudha",
-            "phone": "9869688544",
-            "age": 22,
+            'firstname': 'Ritesh',
+            'lastname': 'Thele',
+            'email': 'Ree@gmail.com',
+            "password": "password3",
+            "address": "Dhapakhal",
+            "phone": "986968244",
+            "age": 23,
             "role": "Client",
             "projects": "Jobportal",
             "Exprience": "2 year",
             "company": "Softwaricaedu",
             "foundedin": "Nepal",
-            "userbio": "my name is ankit",
+            "userbio": "my name is Rite",
             "resume": "ihave",           
-        };
+        };       
 
         return registration.create(register).then((pro_ret) => {
-            expect(pro_ret.firstname).toEqual('Ankit');
+            expect(pro_ret.firstname).toEqual('Ritesh');
         });
     });
 
 });
-
 
 
 
