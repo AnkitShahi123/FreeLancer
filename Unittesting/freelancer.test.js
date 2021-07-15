@@ -133,17 +133,32 @@ afterAll(async () => {
 // });
 
 // Testing  of Client LOGIN//
+// describe('Login test anything', () => { // the code below is for insert testing
+//     it('Login testing anything', () => {
+//         // const register = {
+//         //     'email': 'lama12@gmail.com',
+//         //     "password": "password2",
+//         // };
+//         return registration.find({ email: 'lama12@gmail.com', password: 'password2' },).then((pro_ret) => {
+//             console.log(pro_ret)
+//             expect(pro_ret[0].firstname).toEqual('Ankit');
+//         })
+//     })
+// });
+
+// // Testing  of Freelancer LOGIN
 describe('Login test anything', () => { // the code below is for insert testing
-    it('Login testing anything', () => {
-        // const register = {
-        //     'email': 'lama12@gmail.com',
-        //     "password": "password2",
-        // };
-        return registration.find({ email: 'lama12@gmail.com', password: 'password2' },).then((pro_ret) => {
+    it('Login testing anything', ()=>{
+        return registration.find({email:'Ree@gmail.com', password: 'password3'},).then((pro_ret) => {
             console.log(pro_ret)
-            expect(pro_ret[0].firstname).toEqual('Ankit');
+            expect(pro_ret[0].firstname).toEqual('Ritesh');
         })
-    })
+    }
+        // const register = {
+        //     'email': 'sashank@gmail.com',
+        //     "password": "password1",            
+        // };
+    );
 });
 
 
