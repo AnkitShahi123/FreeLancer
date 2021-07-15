@@ -174,25 +174,38 @@ afterAll(async () => {
 
 // Post a work of client// 
 
-describe('Posting Schema Testing', () => {
+// describe('Posting Schema Testing', () => {
 
-    it("Add Posting testing anything", () => {
-        const workdata = {
-         userId: "60efc6f4eb9c990d48a0f756", 
-         worktitle:"UX Design",
-         worktype:"test",
-         workdescription: "test1",
-         requiredexperience: "testexperience",
-         estimatedprice:"2000"
+//     it("Add Posting testing anything", () => {
+//         const workdata = {
+//          userId: "60efc6f4eb9c990d48a0f756", 
+//          worktitle:"UX Design",
+//          worktype:"test",
+//          workdescription: "test1",
+//          requiredexperience: "testexperience",
+//          estimatedprice:"2000"
    
 
 
-        };
-        return work.create(workdata).then((pro_ret) => {
-            expect(pro_ret.worktitle).toEqual('UX Design');
-        });
-    });
+//         };
+//         return work.create(workdata).then((pro_ret) => {
+//             expect(pro_ret.worktitle).toEqual('UX Design');
+//         });
+//     });
 
+// });
+
+
+// //Update Post of a client//
+
+it("testing Post Update",async()=>
+{
+    return work.findOneAndUpdate(
+        { _id: Object("60efd2b13716dc11345a6b99") },
+            {$set: {worktitle:"UI Design"}}////updating product name
+    ).then((pp)=>{
+        expect(pp.worktitle).toEqual("UX Design");
+    });
 });
 
 
