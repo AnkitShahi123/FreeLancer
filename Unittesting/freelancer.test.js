@@ -91,31 +91,45 @@ afterAll(async () => {
 
 // //USER FRLANCER REGISTRATION TESTING
 
-describe('User Schema test anything', () => { // the code below is for insert testing
-    it('Add User testing anything', () => {
-        const register = {
+// describe('User Schema test anything', () => { // the code below is for insert testing
+//     it('Add User testing anything', () => {
+//         const register = {
 
-            'firstname': 'Ritesh',
-            'lastname': 'Thele',
-            'email': 'Ree@gmail.com',
-            "password": "password3",
-            "address": "Dhapakhal",
-            "phone": "986968244",
-            "age": 23,
-            "role": "Client",
-            "projects": "Jobportal",
-            "Exprience": "2 year",
-            "company": "Softwaricaedu",
-            "foundedin": "Nepal",
-            "userbio": "my name is Rite",
-            "resume": "ihave",           
-        };       
+//             'firstname': 'Ritesh',
+//             'lastname': 'Thele',
+//             'email': 'Ree@gmail.com',
+//             "password": "password3",
+//             "address": "Dhapakhal",
+//             "phone": "986968244",
+//             "age": 23,
+//             "role": "Client",
+//             "projects": "Jobportal",
+//             "Exprience": "2 year",
+//             "company": "Softwaricaedu",
+//             "foundedin": "Nepal",
+//             "userbio": "my name is Rite",
+//             "resume": "ihave",           
+//         };       
 
-        return registration.create(register).then((pro_ret) => {
-            expect(pro_ret.firstname).toEqual('Ritesh');
-        });
-    });
+//         return registration.create(register).then((pro_ret) => {
+//             expect(pro_ret.firstname).toEqual('Ritesh');
+//         });
+//     });
 
+// });
+
+// // Testing  of admin LOGIN
+describe('Login test anything', () => { // the code below is for insert testing
+    it('Login testing anything', () => {
+        // const register = {
+        //     'email': 'sashank@gmail.com',
+        //     "password": "password1",
+        // };
+        return registration.find({ email: 'sashank@gmail.com', password: 'password1' },).then((pro_ret) => {
+            console.log(pro_ret)
+            expect(pro_ret[0].firstname).toEqual('sashank');
+        })
+    })
 });
 
 
