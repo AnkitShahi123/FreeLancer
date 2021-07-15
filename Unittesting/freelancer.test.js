@@ -164,12 +164,36 @@ afterAll(async () => {
 // Delete Posting of work of client
 
 
-it('to test the delete package is working or not', async() =>
-{
-    return Packages.deleteMany();
-    { _id: Object("607d85f2e362a90a181add7d") }
-    conststatus= await packages.deleteMany();
-    expect(status.ok).toBe(1);});
+// it('to test the delete package is working or not', async() =>
+// {
+//     return Packages.deleteMany();
+//     { _id: Object("607d85f2e362a90a181add7d") }
+//     conststatus= await packages.deleteMany();
+//     expect(status.ok).toBe(1);});
+
+
+// Post a work of client// 
+
+describe('Posting Schema Testing', () => {
+
+    it("Add Posting testing anything", () => {
+        const workdata = {
+         userId: "60efc6f4eb9c990d48a0f756", 
+         worktitle:"UX Design",
+         worktype:"test",
+         workdescription: "test1",
+         requiredexperience: "testexperience",
+         estimatedprice:"2000"
+   
+
+
+        };
+        return work.create(workdata).then((pro_ret) => {
+            expect(pro_ret.worktitle).toEqual('UX Design');
+        });
+    });
+
+});
 
 
 
