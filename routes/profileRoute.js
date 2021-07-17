@@ -24,16 +24,14 @@ router.get(
 
 router.put(
   "/profile/editProfileClient/:id",
+  auth.verifyUser,
   profile.editProfileClient
 );
 
 
 router.put(
   "/profile/editProfileFreelancer/:id",
-  [
-    check("projects", "Project must be entered").not().isEmpty(),
-    check("experience", "Experience must be entered").not().isEmpty(),
-  ],
+  auth.verifyUser,
   profile.editProfileFreelancer
 );
 
