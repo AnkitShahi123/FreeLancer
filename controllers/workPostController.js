@@ -71,9 +71,7 @@ class workController {
         res.status(500).json({ message: err });
       });
   }
-  
-  
-  
+
   getSinglework(req, res) {
     const id = req.params.id;
     work
@@ -85,6 +83,13 @@ class workController {
       .catch(function (e) {
         res.status(500).json({ message: e });
       });
+  }
+
+  getSearchwork(req, res) {
+    var regex = new RegExp(req.params.name, "i");
+    work.find({ worktitle: regex}).then((result) => {
+      res.status(200).json(result);
+    });
   }
 }
 
