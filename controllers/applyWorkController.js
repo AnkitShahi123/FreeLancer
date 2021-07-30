@@ -87,6 +87,20 @@ class applyWorkController {
         res.status(500).json({ message: e });
       });
   }
+
+  approvework(req, res) {
+    const confirmStatus = req.body.confirmStatus;
+    const appliedid = req.params.id;
+    applywork
+      .updateOne({ _id: appliedid }, { confirmStatus: confirmStatus })
+      .then(function (result) {
+        res.status(201).json({ message: "applied status has been updated" });
+        console.log("Status changed"+result.confirmStatus)
+      })
+      .catch(function (err) {
+        res.status(500).json({ message: err });
+      });
+  }
   
 
 

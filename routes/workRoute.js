@@ -8,8 +8,10 @@ const upload = require("../middleware/uploads");
 const uploadvideo = require("../middleware/uploadVideo");
 const workController = require("../controllers/workPostController");
 const applyWorkController = require("../controllers/applyWorkController");
+const saveWorkController = require("../controllers/saveWorkController");
 const work = new workController();
 const workapply = new applyWorkController();
+const worksave = new saveWorkController();
 
 router.post(
   "/work/add",
@@ -57,5 +59,41 @@ router.get(
   auth.verifyUser,
   work.showMyListings
 );
+
+router.delete(
+  "/work/delete/:pid",
+  auth.verifyUser,
+  work.deletework
+);
+
+router.put("/work/update/:id", auth.verifyUser,work.updatework);
+
+router.get(
+  "/work/showWhoApplied/:id",
+  auth.verifyUser,
+  workapply.showWhoApplied
+);
+
+router.put(
+  "/work/approvework/:id",
+  auth.verifyUser,
+  workapply.approvework
+);
+
+////////////////////////saved works routess
+router.post("/work/saveWork/:id", auth.verifyUser, worksave.saveWork);
+
+router.get(
+  "/work/showMySaved",
+  auth.verifyUser,
+  worksave.showMySaved
+);
+
+router.delete(
+  "/work/deleteMySaved/:id",
+  auth.verifyUser,
+  worksave.deleteMySaved
+);
+
 
 module.exports = router;
