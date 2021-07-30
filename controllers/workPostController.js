@@ -115,45 +115,9 @@ class workController {
       });
   }
 
-  deletework(req, res) {
-    const pid = req.params.pid;
-    work
-      .deleteOne({ _id: pid })
-      .then(function (result) {
-        res.status(200).json({ message: "work has been deleted" });
-      })
-      .catch(function (err) {
-        res.status(500).json({ message: err });
-      });
-  }
 
-  updatework(req, res) {
-    const worktitle = req.body.worktitle;
-    const worktype = req.body.worktype;
-    const workdescription = req.body.workdescription;
-    const requiredexperience = req.body.requiredexperience;
-    const estimatedprice = req.body.estimatedprice;
-    const id = req.params.id;
 
-    work
-      .findOneAndUpdate(
-        { _id: id },
-        {
-          worktitle: worktitle,
-          worktype: worktype,
-          workdescription: workdescription,
-          requiredexperience: requiredexperience,
-          estimatedprice: estimatedprice,
-        }
-      )
-      .then(function (data) {
-        res.status(200).json({ success: true, message: "Updated Sucessfully", data });
-        console.log("updated")
-      })
-      .catch(function (err) {
-        res.status(500).json({ message: err });
-      });
-  }
+  
 
 }
 
