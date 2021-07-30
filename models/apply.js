@@ -14,7 +14,7 @@ const applySchema = new SCHEMA({
   },
   myamount:{
     type: String,
-    required: true
+    // required: true
   },
   confirmStatus: {
     type: String,

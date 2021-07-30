@@ -24,7 +24,7 @@ const workSchema = new SCHEMA({
     required: true
   },
   vacancy: {
-    type: String,
+    type: Number,
     required: true
   },
   estimatedprice: {
@@ -42,6 +42,10 @@ const workSchema = new SCHEMA({
   createdAt: {
     type: Date,
     default: Date.now,
+  },
+  workStatus: {
+    type: String,
+    default: "Active",
   },
 });
 
