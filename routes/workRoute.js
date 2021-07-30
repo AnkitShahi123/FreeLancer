@@ -42,13 +42,20 @@ router.get("/work/search/:name", work.getSearchwork);
 //////////////////////applyyy
 router.post("/work/applyWork/:id", auth.verifyUser, workapply.applywork);
 
-router.get(
-  "/work/showStatus/:id",
+router.get("/work/showStatus/:id", auth.verifyUser, workapply.showStatus);
+
+router.get("/work/showMyApplied", auth.verifyUser, workapply.showMyApplied);
+
+router.delete(
+  "/work/deleteMyApplied/:id",
   auth.verifyUser,
-  workapply.showStatus
+  workapply.deleteMyApplied
 );
 
-
-
+router.get(
+  "/work/showMyListings",
+  auth.verifyUser,
+  work.showMyListings
+);
 
 module.exports = router;

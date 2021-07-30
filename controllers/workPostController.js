@@ -99,6 +99,22 @@ class workController {
       res.status(200).json(result);
     });
   }
+
+  showMyListings(req, res) {
+    const workid = req.workid;
+    const userid = req.user;
+    work
+      .find({
+        creator: userid,
+      }).populate('creator')
+      .then(function (data) {
+        res.status(200).json(data);
+      })
+      .catch(function (e) {
+        res.status(500).json({ message: e });
+      });
+  }
+
 }
 
 module.exports = workController;

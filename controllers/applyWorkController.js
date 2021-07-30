@@ -5,7 +5,7 @@ const applyWorkControllers = require("../controllers/applyWorkController");
 class applyWorkController {
   applywork(req, res) {
     const userid = req.user;
-    const workid = req.params.pid;
+    const workid = req.params.id;
     const myamount = req.body.myamount;
     const workdata = new applywork({
       userid: userid,
@@ -56,6 +56,25 @@ class applyWorkController {
         res.status(500).json({ message: e });
       });
   }
+
+  deleteMyApplied(req, res) {
+    const id = req.params.id;
+    applywork
+      .deleteOne({
+        _id: id,
+      })
+      .then(function (data) {
+        res.status(200).json(data);
+        console.log("deleted successfully");
+      })
+      .catch(function (e) {
+        res.status(500).json({ message: e });
+      });
+  }
+
+  
+
+
 }
 
 module.exports = applyWorkController;
