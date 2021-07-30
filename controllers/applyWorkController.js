@@ -72,6 +72,21 @@ class applyWorkController {
       });
   }
 
+  showWhoApplied(req, res) {
+    const workid = req.params.id;
+    const userid = req.user;
+    applywork
+      .find({
+        workid: workid,
+      }).populate('userid')
+      .populate('workid')
+      .then(function (data) {
+        res.status(200).json(data);
+      })
+      .catch(function (e) {
+        res.status(500).json({ message: e });
+      });
+  }
   
 
 
