@@ -25,25 +25,13 @@ router.get("/work/showall", function (req, res) {
       .populate("creator")
       .then(function (data) {
         
-        res.status(200).json({success: true, data});
+        res.status(200).json(data);
       })
       .catch(function (err) {
         res.status(500).json({ message: err });
       });
   });
 
-  router.get("/work/showall", function (req, res) {
-    works
-      .find()
-      .populate("creator")
-      .then(function (data) {
-        
-        res.status(200).json({success: true, data});
-      })
-      .catch(function (err) {
-        res.status(500).json({ message: err });
-      });
-  });
 
   router.get("/work/showSingle/:id", work.getSinglework);
 

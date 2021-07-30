@@ -19,6 +19,14 @@ const workSchema = new SCHEMA({
     type: String,
     required: true
   },
+  skills: {
+    type: String,
+    required: true
+  },
+  vacancy: {
+    type: String,
+    required: true
+  },
   estimatedprice: {
     type: String,
     required: true

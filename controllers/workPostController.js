@@ -11,6 +11,8 @@ class workController {
     const workdescription = req.body.workdescription;
     const requiredexperience = req.body.requiredexperience;
     const estimatedprice = req.body.estimatedprice;
+    const skills = req.body.skills;
+    const vacancy = req.body.vacancy;
     const creator = req.user;
     const path = req.file.path;
 
@@ -20,6 +22,8 @@ class workController {
       workdescription: workdescription,
       requiredexperience: requiredexperience,
       estimatedprice: estimatedprice,
+      skills: skills,
+      vacancy: vacancy,
       photo: path,
       creator: creator,
     });
@@ -51,6 +55,8 @@ class workController {
     const workdescription = req.body.workdescription;
     const requiredexperience = req.body.requiredexperience;
     const estimatedprice = req.body.estimatedprice;
+    const skills = req.body.skills;
+    const vacancy = req.body.vacancy;
     const id = req.body.id;
 
     work
@@ -62,6 +68,8 @@ class workController {
           workdescription: workdescription,
           requiredexperience: requiredexperience,
           estimatedprice: estimatedprice,
+          skills: skills,
+          vacancy: vacancy,
         }
       )
       .then(function (result) {
