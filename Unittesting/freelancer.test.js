@@ -3,10 +3,14 @@ const registration = require('../models/user');
 const mongoose = require('mongoose');
 const user = require('../models/user');
 const work =require('../models/work');
+const apply =require('../models/apply');
+const save = require('../models/save');
+const report=require('../models/report');
 // use the new name of the database
 
 const url = 'mongodb://localhost:27017/Freelancer_testing';
 var workId = ""
+
 
 beforeAll(async () => {
     await mongoose.connect(url, {
@@ -27,7 +31,7 @@ afterAll(async () => {
 
 
 
-
+//Sprint 1 TDD Testing//
 
 
 // USER ADMIN REGISTRATION TESTING
@@ -90,7 +94,7 @@ afterAll(async () => {
 // });
 
 
-// //USER FRLANCER REGISTRATION TESTING
+// //USER FREELANCER REGISTRATION TESTING
 
 // describe('User Schema test anything', () => { // the code below is for insert testing
 //     it('Add User testing anything', () => {
@@ -119,7 +123,7 @@ afterAll(async () => {
 
 // });
 
-// // Testing  of admin LOGIN
+//  Testing  of admin LOGIN//
 // describe('Login test anything', () => { // the code below is for insert testing
 //     it('Login testing anything', () => {
 //         // const register = {
@@ -147,7 +151,7 @@ afterAll(async () => {
 //     })
 // });
 
-// // Testing  of Freelancer LOGIN
+// Testing  of Freelancer LOGIN
 // describe('Login test anything', () => { // the code below is for insert testing
 //     it('Login testing anything', ()=>{
 //         return registration.find({email:'Ree@gmail.com', password: 'password3'},).then((pro_ret) => {
@@ -161,6 +165,9 @@ afterAll(async () => {
 //         // };
 //     );
 // });
+
+
+//Sprint 2//(2)//
 
 // Delete Posting of work of client
 
@@ -184,7 +191,9 @@ afterAll(async () => {
 //          worktype:"test",
 //          workdescription: "test1",
 //          requiredexperience: "testexperience",
-//          estimatedprice:"2000"
+//          estimatedprice:"2000",
+//          vacancy:10,
+//          skills:"developer"
    
 
 
@@ -210,72 +219,87 @@ afterAll(async () => {
 // });
 
 
-
+//Sprint 3//
 
 //Apply a work//
- describe('Apply Schema Testing', () => {
+//  describe('Apply Schema Testing', () => {
 
-     it("Add Posting testing anything", () => {
-         const workdata = {
-          userId: "60efc6f4eb9c990d48a0f756", 
-          worktitle:"UX Design",
-          worktype:"test",
-          workdescription: "test1",
-          requiredexperience: "testexperience",
-          estimatedprice:"2000",
-          vacancy:100,
-          skills:"jjjjjjs"
+//      it("Add Posting testing anything", () => {
+//          const workdata = {
+//           userId: "610b7bbfe739f64a5cd9d645", 
+//           workId:"610b79c7a82e9d5688ebe9b5",
+//           myamount:"1000"
+         
+         
+         
 
-         };
-         return work.create(workdata).then((pro_ret) => {
-             workId= pro_ret._id
-             expect(pro_ret.worktitle).toEqual('UX Design');
-         });
-     });
+//          };
+//          return apply.create(workdata).then((pro_ret) => {
+//              workId= pro_ret._id
+//              expect(pro_ret.myamount).toEqual('1000');
+//          });
+//      });
 
-});
+// });
 
 
 
 
 // //Delete Apply work of Freelancer//
+// it('to test the delete applied works is working or not', async() =>
+// {
+//     return apply.deleteMany();
+//     { _id: workId }
+//     conststatus= await apply.deleteMany();
+//     expect(status.ok).toBe(1);});
+
+
+//Sprint 4//
+
+// Save a Work By Freelancer Testing//
+// it("Saving a work Schema Testing ",async()=>
+// {
+//     return work.findOne(
+//         { _id: workId },
+//             // {$set: {worktitle:"UI Design"}}////updating product name
+//     ).then((pp)=>{
+//        expect(pp.worktitle).toEqual("UX Design");
+//     });
+// });
+
+
+// // it("Updating a work Schema Testing ",async()=>
+// // {
+// //     return work.findOneAndUpdate(
+// //         { _id: workId },
+// //             {$set: {worktitle:"UI Design"}}////updating product names
+// //     ).then((pp)=>{
+// //        expect(pp.worktitle).toEqual("UX Design");
+// //     });
+// // });
 
 
 
 
-//Save a Work By Freelancer Testing//
-it("Saving a work Schema Testing ",async()=>
-{
-    return work.findOne(
-        { _id: workId },
-            // {$set: {worktitle:"UI Design"}}////updating product name
-    ).then((pp)=>{
-       expect(pp.worktitle).toEqual("UX Design");
-    });
-});
+// it('to test the delete applied works is working or not', async() =>
+// {
+//     return work.deleteMany();
+//     { _id: workId }
+//     conststatus= await work.deleteMany();
+//     expect(status.ok).toBe(1);});
 
 
-it("Updating a work Schema Testing ",async()=>
-{
-    return work.findOneAndUpdate(
-        { _id: workId },
-            {$set: {worktitle:"UI Design"}}////updating product names
-    ).then((pp)=>{
-       expect(pp.worktitle).toEqual("UX Design");
-    });
-});
+//Sprint 5//
 
-
-
-it('to test the delete package is working or not', async() =>
-{
-    return work.deleteMany();
-    { _id: workId }
-    conststatus= await work.deleteMany();
-    expect(status.ok).toBe(1);});
-
-
-
-
-    //Approval System//
+    // Approval System//(client)
     
+  it("Updating a work Schema Testing ",async()=>
+{
+    return apply.findOneAndUpdate(
+        { _id: Object("612484fe37a0f448e00f73bd") },
+            {$set: {confirmStatus:"Denied"}}////updating product names
+    ).then((pp)=>{
+       expect(pp.confirmStatus).toEqual("Confirmed");
+    });
+});
+
