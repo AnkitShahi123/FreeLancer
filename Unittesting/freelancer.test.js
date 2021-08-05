@@ -6,6 +6,7 @@ const work =require('../models/work');
 // use the new name of the database
 
 const url = 'mongodb://localhost:27017/Freelancer_testing';
+var workId = ""
 
 beforeAll(async () => {
     await mongoose.connect(url, {
@@ -198,18 +199,83 @@ afterAll(async () => {
 
 // //Update Post of a client//
 
-it("testing Post Update",async()=>
-{
-    return work.findOneAndUpdate(
-        { _id: Object("60efd2b13716dc11345a6b99") },
-            {$set: {worktitle:"UI Design"}}////updating product name
-    ).then((pp)=>{
-        expect(pp.worktitle).toEqual("UX Design");
-    });
+// it("testing Post Update",async()=>
+// {
+//     return work.findOneAndUpdate(
+//         { _id: Object("60efd2b13716dc11345a6b99") },
+//             {$set: {worktitle:"UI Design"}}////updating product name
+//     ).then((pp)=>{
+//        expect(pp.worktitle).toEqual("UX Design");
+//     });
+// });
+
+
+
+
+//Apply a work//
+ describe('Apply Schema Testing', () => {
+
+     it("Add Posting testing anything", () => {
+         const workdata = {
+          userId: "60efc6f4eb9c990d48a0f756", 
+          worktitle:"UX Design",
+          worktype:"test",
+          workdescription: "test1",
+          requiredexperience: "testexperience",
+          estimatedprice:"2000",
+          vacancy:100,
+          skills:"jjjjjjs"
+
+         };
+         return work.create(workdata).then((pro_ret) => {
+             workId= pro_ret._id
+             expect(pro_ret.worktitle).toEqual('UX Design');
+         });
+     });
+
 });
 
 
 
 
+// //Delete Apply work of Freelancer//
 
 
+
+
+//Save a Work By Freelancer Testing//
+it("Saving a work Schema Testing ",async()=>
+{
+    return work.findOne(
+        { _id: workId },
+            // {$set: {worktitle:"UI Design"}}////updating product name
+    ).then((pp)=>{
+       expect(pp.worktitle).toEqual("UX Design");
+    });
+});
+
+
+it("Updating a work Schema Testing ",async()=>
+{
+    return work.findOneAndUpdate(
+        { _id: workId },
+            {$set: {worktitle:"UI Design"}}////updating product names
+    ).then((pp)=>{
+       expect(pp.worktitle).toEqual("UX Design");
+    });
+});
+
+
+
+it('to test the delete package is working or not', async() =>
+{
+    return work.deleteMany();
+    { _id: workId }
+    conststatus= await work.deleteMany();
+    expect(status.ok).toBe(1);});
+
+
+
+
+    //Approval System//
+    
