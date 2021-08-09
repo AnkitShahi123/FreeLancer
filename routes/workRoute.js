@@ -95,5 +95,17 @@ router.delete(
   worksave.deleteMySaved
 );
 
+///////////timers
+router.put(
+  "/work/startworktimer/:id",
+  auth.verifyUser,
+  workapply.startWorkTimer
+);
+router.put(
+  "/work/stopworktimer/:id",
+  auth.verifyUser,
+  workapply.stopWorkTimer
+);
+
 
 module.exports = router;

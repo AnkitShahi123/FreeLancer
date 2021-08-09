@@ -12,7 +12,7 @@ const applySchema = new SCHEMA({
     type: SCHEMA.Types.ObjectId,
     ref: Work,
   },
-  myamount:{
+  myamount: {
     type: String,
     // required: true
   },
@@ -20,9 +20,12 @@ const applySchema = new SCHEMA({
     type: String,
     default: "pending",
   },
+  timerStatus: {
+    type: String,
+    default: "Nothing",
+  },
   video: {
     type: String,
-    
   },
   createdAt: {
     type: Date,

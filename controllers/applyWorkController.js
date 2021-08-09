@@ -101,7 +101,34 @@ class applyWorkController {
         res.status(500).json({ message: err });
       });
   }
+
+  startWorkTimer(req, res){
+    const timerStatus = req.body.timerStatus;
+    const appliedid = req.params.id;
+    applywork
+      .updateOne({ _id: appliedid }, { timerStatus: timerStatus })
+      .then(function (result) {
+        res.status(201).json({ message: "Work has been started" });
+        console.log("Status changed"+result.timerStatus)
+      })
+      .catch(function (err) {
+        res.status(500).json({ message: err });
+      });
+  }
   
+  stopWorkTimer(req, res){
+    const timerStatus = req.body.timerStatus;
+    const appliedid = req.params.id;
+    applywork
+      .updateOne({ _id: appliedid }, { timerStatus: timerStatus })
+      .then(function (result) {
+        res.status(201).json({ message: "Work has been stopped" });
+        console.log("Status changed"+result.timerStatus)
+      })
+      .catch(function (err) {
+        res.status(500).json({ message: err });
+      });
+  }
 
 
 }
