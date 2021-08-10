@@ -293,13 +293,61 @@ afterAll(async () => {
 
     // Approval System//(client)
     
-  it("Updating a work Schema Testing ",async()=>
+//   it("Updating a work Schema Testing ",async()=>
+// {
+//     return apply.findOneAndUpdate(
+//         { _id: Object("612484fe37a0f448e00f73bd") },
+//             {$set: {confirmStatus:"Denied"}}////updating  names
+//     ).then((pp)=>{
+//        expect(pp.confirmStatus).toEqual("Confirmed");
+//     });
+// });
+
+
+  //Approval System//(client)
+    
+//   it("Updating a work Schema Testing ",async()=>
+// {
+//     return apply.findOneAndUpdate(
+//         { _id: Object("610b7e3da60ff026384f2c49") },
+//             {$set: {confirmStatus:"Confirmed"}}////updating applied status//
+//     ).then((pp)=>{
+//        expect(pp.confirmStatus).toEqual("pending");
+//     });
+// });
+
+
+
+// // Save a Work By Freelancer Testing//
+// describe('Apply Schema Testing', () => {
+
+ 
+
+//              it("Add Posting testing anything", () => {
+//                  const workdata = {
+//                   userId: "610b7bbfe739f64a5cd9d645", 
+//                   workId:"610b79c7a82e9d5688ebe9b5",
+    
+                 
+        
+//                  };
+//                  return save.create(workdata).then((pro_ret) => {
+//                      workId= pro_ret._id
+//                      expect(pro_ret.workId).toEqual(_id:Object("60efd2b13716dc11345a6b99");
+//                  });
+//              });
+        
+//         });
+        
+//Sprint 6//
+
+//View Applicants//
+it("View Applicants Schema Testing ",async()=>
 {
     return apply.findOneAndUpdate(
         { _id: Object("612484fe37a0f448e00f73bd") },
-            {$set: {confirmStatus:"Denied"}}////updating product names
+            {$set: {timerStatus:"Started"}}//View Applicants On Progress//
     ).then((pp)=>{
-       expect(pp.confirmStatus).toEqual("Confirmed");
+       expect(pp.timerStatus).toEqual("Nothing");
     });
 });
-
