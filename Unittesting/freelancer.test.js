@@ -342,12 +342,22 @@ afterAll(async () => {
 //Sprint 6//
 
 //View Applicants//
-it("View Applicants Schema Testing ",async()=>
+// it("View Applicants Schema Testing ",async()=>
+// {
+//     return apply.findOneAndUpdate(
+//         { _id: Object("612484fe37a0f448e00f73bd") },
+//             {$set: {timerStatus:"Started"}}//View Applicants On Progress//
+//     ).then((pp)=>{
+//        expect(pp.timerStatus).toEqual("Nothing");
+//     });
+// });
+//View Freelancer Records//
+it("View Freelancer Records Testing ",async()=>
 {
     return apply.findOneAndUpdate(
         { _id: Object("612484fe37a0f448e00f73bd") },
-            {$set: {timerStatus:"Started"}}//View Applicants On Progress//
+            {$set: {timerStatus:"Ended"}}//View Applicants On Progress//
     ).then((pp)=>{
-       expect(pp.timerStatus).toEqual("Nothing");
+       expect(pp.timerStatus).toEqual("Started");
     });
 });
