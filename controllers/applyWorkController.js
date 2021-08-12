@@ -130,6 +130,21 @@ class applyWorkController {
       });
   }
 
+  // showMyStarted(req, res) {
+    
+  //   const userid = req.user;
+  //   applywork
+  //     .find({
+  //       timerStatus: "Status",
+  //     }).populate('userid')
+  //     .populate('workid')
+  //     .then(function (data) {
+  //       res.status(200).json(data);
+  //     })
+  //     .catch(function (e) {
+  //       res.status(500).json({ message: e });
+  //     });
+  // }
 
 }
 

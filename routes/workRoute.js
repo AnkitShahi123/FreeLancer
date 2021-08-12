@@ -120,4 +120,33 @@ router.get("/work/showMyStarted", function (req, res) {
     });
 });
 
+router.get("/work/showMyStopped", function (req, res) {
+  apply
+    .find(
+      {timerStatus:"Stopped"}
+    )
+    .then(function (data) {
+      res.status(200).json(data);
+    })
+    .catch(function (err) {
+      res.status(500).json({ message: err });
+    });
+});
+
+router.get("/work/showCompletedFreelancers", function (req, res) {
+  apply
+    .find(
+      {timerStatus:"Stopped"}
+    )
+    .populate("userid")
+    .then(function (data) {
+      res.status(200).json(data);
+    })
+    .catch(function (err) {
+      res.status(500).json({ message: err });
+    });
+});
+
+
+
 module.exports = router;
