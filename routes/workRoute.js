@@ -107,5 +107,17 @@ router.put(
   workapply.stopWorkTimer
 );
 
+router.get("/work/showMyStarted", function (req, res) {
+  apply
+    .find(
+      {timerStatus:"Started"}
+    )
+    .then(function (data) {
+      res.status(200).json(data);
+    })
+    .catch(function (err) {
+      res.status(500).json({ message: err });
+    });
+});
 
 module.exports = router;
