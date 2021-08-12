@@ -352,12 +352,22 @@ afterAll(async () => {
 //     });
 // });
 //View Freelancer Records//
-it("View Freelancer Records Testing ",async()=>
+// it("View Freelancer Records Testing ",async()=>
+// {
+//     return apply.findOneAndUpdate(
+//         { _id: Object("612484fe37a0f448e00f73bd") },
+//             {$set: {timerStatus:"Ended"}}//View Applicants On Progress//
+//     ).then((pp)=>{
+//        expect(pp.timerStatus).toEqual("Started");
+//     });
+// });
+
+//View Client Records//
+it("View Client Records Testing ",async()=>
 {
-    return apply.findOneAndUpdate(
+    return apply.find(
         { _id: Object("612484fe37a0f448e00f73bd") },
-            {$set: {timerStatus:"Ended"}}//View Applicants On Progress//
-    ).then((pp)=>{
-       expect(pp.timerStatus).toEqual("Started");
-    });
+           
+    )
+    
 });
