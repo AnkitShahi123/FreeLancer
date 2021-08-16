@@ -363,11 +363,35 @@ afterAll(async () => {
 // });
 
 //View Client Records//
-it("View Client Records Testing ",async()=>
-{
-    return apply.find(
-        { _id: Object("612484fe37a0f448e00f73bd") },
+// it("View Client Records Testing ",async()=>
+// {
+//     return apply.find(
+//         { _id: Object("612484fe37a0f448e00f73bd") },
            
-    )
+//     )
     
+// });
+//Sprint 7//
+
+//Report System//
+
+//Report By Freelancer//
+ describe('Report by Freelancer Schema Testing', () => {
+
+     it("Report testing anything", () => {
+         const workdata = {
+          userid: "610b7bbfe739f64a5cd9d645", 
+          workid:"610b79c7a82e9d5688ebe9b5"
+         
+         
+         
+
+         };
+         return report.create(workdata).then((pro_ret) => {
+             workid= pro_ret._id
+             expect(pro_ret.status).toEqual('In progress');
+         });
+     });
+
 });
+
