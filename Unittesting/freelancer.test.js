@@ -376,22 +376,33 @@ afterAll(async () => {
 //Report System//
 
 //Report By Freelancer//
- describe('Report by Freelancer Schema Testing', () => {
+//  describe('Report by Freelancer Schema Testing', () => {
 
-     it("Report testing anything", () => {
-         const workdata = {
-          userid: "610b7bbfe739f64a5cd9d645", 
-          workid:"610b79c7a82e9d5688ebe9b5"
+//      it("Report testing anything", () => {
+//          const workdata = {
+//           userid: "610b7bbfe739f64a5cd9d645", 
+//           workid:"610b79c7a82e9d5688ebe9b5"
          
          
          
 
-         };
-         return report.create(workdata).then((pro_ret) => {
-             workid= pro_ret._id
-             expect(pro_ret.status).toEqual('In progress');
-         });
-     });
+//          };
+//          return report.create(workdata).then((pro_ret) => {
+//              workid= pro_ret._id
+//              expect(pro_ret.status).toEqual('In progress');
+//          });
+//      });
 
+// });
+
+//Admin//
+it("Report System by Admin Schema Testing ",async()=>
+{
+    return report.findOneAndUpdate(
+        { _id: Object("61249085b5f5525124d5db69") },
+            {$set: {status:"Approved by Admin"}}
+    ).then((pp)=>{
+       expect(pp.status).toEqual("In progress");
+    });
 });
 
