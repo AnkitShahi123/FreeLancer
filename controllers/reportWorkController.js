@@ -1,6 +1,7 @@
 const work = require("../models/work");
 const reportWork = require("../models/report");
 const user = require("../models/user");
+
 const reportWorkControllers = require("../controllers/reportWorkController");
 class reportWorkController {
   reportWork(req, res) {
@@ -56,7 +57,7 @@ class reportWorkController {
   approveThisWork(req, res) {
     const approval = req.body.approval;
     const id = req.params.id;
-    applywork
+    work
       .updateOne({ _id: id }, { approval: approval })
       .then(function (result) {
         res.status(201).json({ message: "applied status has been updated" });

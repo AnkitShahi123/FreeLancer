@@ -166,7 +166,7 @@ router.delete(
 );
 
 ///approve work
-router.post("/work/approveThisWork/:id", auth.verifyUser, workreport.reportWork);
+router.put("/work/approveThisWork/:id", auth.verifyUser, workreport.approveThisWork);
 
 
 

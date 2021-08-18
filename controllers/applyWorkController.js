@@ -2,6 +2,7 @@ const work = require("../models/work");
 const applywork = require("../models/apply");
 const user = require("../models/user");
 const applyWorkControllers = require("../controllers/applyWorkController");
+
 class applyWorkController {
   applywork(req, res) {
     const userid = req.user;
