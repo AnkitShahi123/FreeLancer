@@ -4,7 +4,6 @@ const works = require("../models/work");
 const { check, validationResult } = require("express-validator");
 const auth = require("../middleware/auth");
 const reportWorkController = require("../controllers/reportWorkController");
-const work = new workController();
 
 const workreport = new reportWorkController();
 

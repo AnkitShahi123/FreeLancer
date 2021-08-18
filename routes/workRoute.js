@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const works = require("../models/work");
 const apply = require("../models/apply");
+const report = require("../models/report");
 const { check, validationResult } = require("express-validator");
 const auth = require("../middleware/auth");
 const upload = require("../middleware/uploads");
@@ -9,9 +10,11 @@ const uploadvideo = require("../middleware/uploadVideo");
 const workController = require("../controllers/workPostController");
 const applyWorkController = require("../controllers/applyWorkController");
 const saveWorkController = require("../controllers/saveWorkController");
+const reportWorkController = require("../controllers/reportWorkController");
 const work = new workController();
 const workapply = new applyWorkController();
 const worksave = new saveWorkController();
+const workreport = new reportWorkController();
 
 router.post(
   "/work/add",
@@ -146,6 +149,24 @@ router.get("/work/showCompletedFreelancers", function (req, res) {
       res.status(500).json({ message: err });
     });
 });
+
+
+router.post("/work/reportWork/:id", auth.verifyUser, workreport.reportWork);
+
+router.get(
+  "/work/showMyreported",
+  auth.verifyUser,
+  workreport.showMyReported
+);
+
+router.delete(
+  "/work/deleteMyreport/:id",
+  auth.verifyUser,
+  workreport.deleteMyReport
+);
+
+///approve work
+router.post("/work/approveThisWork/:id", auth.verifyUser, workreport.reportWork);
 
 
 

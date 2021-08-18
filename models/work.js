@@ -47,6 +47,10 @@ const workSchema = new SCHEMA({
     type: String,
     default: "Active",
   },
+  approval:{
+    type:String,
+    default:"Not reviewed by admin"
+  }
 });
 
 const WORK = mongoose.model("work", workSchema);

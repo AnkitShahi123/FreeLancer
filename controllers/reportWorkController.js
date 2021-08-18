@@ -24,12 +24,9 @@ class reportWorkController {
   
 
   showMyReported(req, res) {
-    const userid = req.user;
     var arr = [];
     reportWork
-      .find({
-        userid: userid,
-      })
+      .find()
       .populate("userid")
       .populate("workid")
       .then(function (data) {
@@ -56,6 +53,24 @@ class reportWorkController {
   }
 
   
+  approveThisWork(req, res) {
+    const approval = req.body.approval;
+    const id = req.params.id;
+    applywork
+      .updateOne({ _id: id }, { approval: approval })
+      .then(function (result) {
+        res.status(201).json({ message: "applied status has been updated" });
+        console.log("Status changed"+result.approval)
+      })
+      .catch(function (err) {
+        res.status(500).json({ message: err });
+      });
+  }
+
+
+
+
+
 }
 
 module.exports = reportWorkController;

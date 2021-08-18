@@ -63,6 +63,7 @@ const user = mongoose.model("user", {
     type: Date,
     default: Date.now,
   },
+ 
 });
 
 module.exports = user;
