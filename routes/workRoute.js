@@ -159,14 +159,14 @@ router.get(
   workreport.showMyReported
 );
 
-router.delete(
-  "/work/deleteMyreport/:id",
-  auth.verifyUser,
-  workreport.deleteMyReport
-);
-
-///approve work
+///approve reported work
 router.put("/work/approveThisWork/:id", auth.verifyUser, workreport.approveThisWork);
+
+//// update report after performing an action
+router.put("/work/afterReportAction/:id", auth.verifyUser, workreport.afterReportAction);
+
+
+
 
 
 

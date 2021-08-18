@@ -44,6 +44,7 @@ class workController {
       .deleteOne({ _id: pid })
       .then(function (result) {
         res.status(200).json({ message: "work has been deleted" });
+        console.log("deleted")
       })
       .catch(function (err) {
         res.status(500).json({ message: err });

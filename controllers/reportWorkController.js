@@ -53,15 +53,29 @@ class reportWorkController {
       });
   }
 
+  afterReportAction(req, res) {
+    const status = req.body.status;
+    const id = req.params.id;
+    work
+      .updateOne({ _id: id }, { status: status })
+      .then(function (result) {
+        res.status(201).json({ message: "Status changed" });
+        console.log("changed report status")
+      })
+      .catch(function (err) {
+        res.status(500).json({ message: err });
+      });
+  }
+
   
   approveThisWork(req, res) {
     const approval = req.body.approval;
     const id = req.params.id;
     work
-      .updateOne({ _id: id }, { approval: approval })
+      .updateMany({ _id: id }, { approval: approval })
       .then(function (result) {
         res.status(201).json({ message: "applied status has been updated" });
-        console.log("Status changed"+result.approval)
+        console.log("approved?")
       })
       .catch(function (err) {
         res.status(500).json({ message: err });
