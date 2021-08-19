@@ -396,13 +396,23 @@ afterAll(async () => {
 // });
 
 //Admin//
-it("Report System by Admin Schema Testing ",async()=>
-{
-    return report.findOneAndUpdate(
-        { _id: Object("61249085b5f5525124d5db69") },
-            {$set: {status:"Approved by Admin"}}
-    ).then((pp)=>{
-       expect(pp.status).toEqual("In progress");
-    });
-});
+// it("Report System by Admin Schema Testing ",async()=>
+// {
+//     return report.findOneAndUpdate(
+//         { _id: Object("61249085b5f5525124d5db69") },
+//             {$set: {status:"Approved by Admin"}}
+//     ).then((pp)=>{
+//        expect(pp.status).toEqual("In progress");
+//     });
+// });
 
+//Delete After Reviewed by Admin//
+it('to test the delete work after reviewed by admin', async() =>
+{
+    return report.deleteOne({ _id: Object("61249085b5f5525124d5db69") },);
+    
+    status= await apply.deleteOne();
+    expect(status.ok).toBe(1);});
+
+
+// Sprint 8 //
