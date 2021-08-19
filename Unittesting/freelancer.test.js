@@ -406,13 +406,13 @@ afterAll(async () => {
 //     });
 // });
 
-//Delete After Reviewed by Admin//
-it('to test the delete work after reviewed by admin', async() =>
-{
-    return report.deleteOne({ _id: Object("61249085b5f5525124d5db69") },);
+// //Delete After Reviewed by Admin//
+// it('to test the delete work after reviewed by admin', async() =>
+// {
+//     return report.deleteOne({ _id: Object("61249085b5f5525124d5db69") },);
     
-    status= await apply.deleteOne();
-    expect(status.ok).toBe(1);});
+//     status= await apply.deleteOne();
+//     expect(status.ok).toBe(1);});
 
 
 // Sprint 8 //
