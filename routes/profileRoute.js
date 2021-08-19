@@ -7,7 +7,8 @@ const uploadPdf = require("../middleware/uploadPdf");
 const profileController = require("../controllers/profileController");
 const profile = new profileController();
 
-router.get("/allUser", auth.verifyUser, auth.verifyAdmin, profile.showAllUser);
+router.get("/allClient", profile.showAllClient);
+router.get("/allFreelancer", profile.showAllFreelancer);
 
 // router.get("/allUsers", auth.verifyUser, profile.showAllUsers);
 router.delete("/deleteUser/:id",

@@ -1,9 +1,19 @@
 const user = require("../models/user");
 
 class profileController {
-  showAllUser(req, res) {
+  showAllClient(req, res) {
     user
-      .find()
+      .find({role:'Client'})
+      .then(function (data) {
+        res.status(200).json(data);
+      })
+      .catch(function (err) {
+        res.status(500).json({ message: err });
+      });
+  }
+  showAllFreelancer(req, res) {
+    user
+      .find({role:'Freelancer'})
       .then(function (data) {
         res.status(200).json(data);
       })
