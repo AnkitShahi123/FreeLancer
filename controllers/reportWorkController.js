@@ -1,4 +1,4 @@
-const work = require("../models/work");
+const works = require("../models/work");
 const reportWork = require("../models/report");
 const user = require("../models/user");
 
@@ -42,7 +42,7 @@ class reportWorkController {
     const id = req.params.id;
     reportWork
       .deleteOne({
-        _id: id,
+        _id: id
       })
       .then(function (data) {
         res.status(200).json(data);
@@ -56,7 +56,7 @@ class reportWorkController {
   afterReportAction(req, res) {
     const status = req.body.status;
     const id = req.params.id;
-    work
+    reportWork
       .updateOne({ _id: id }, { status: status })
       .then(function (result) {
         res.status(201).json({ message: "Status changed" });
@@ -71,11 +71,11 @@ class reportWorkController {
   approveThisWork(req, res) {
     const approval = req.body.approval;
     const id = req.params.id;
-    work
-      .updateMany({ _id: id }, { approval: approval })
-      .then(function (result) {
-        res.status(201).json({ message: "applied status has been updated" });
-        console.log("approved?")
+    works
+      .findByIdAndUpdate({ _id: id }, { approval: approval })
+      .then(function (data) {
+        res.status(201).json({ success: true, message: "applied status has been changed", data });
+        console.log("approved work")
       })
       .catch(function (err) {
         res.status(500).json({ message: err });

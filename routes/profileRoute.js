@@ -7,12 +7,18 @@ const uploadPdf = require("../middleware/uploadPdf");
 const profileController = require("../controllers/profileController");
 const profile = new profileController();
 
-router.get(
-  "/allUser",
+router.get("/allUser", auth.verifyUser, auth.verifyAdmin, profile.showAllUser);
+
+// router.get("/allUsers", auth.verifyUser, profile.showAllUsers);
+router.delete("/deleteUser/:id",
+auth.verifyUser, profile.deleteUser);
+
+router.delete(
+  "/deleteUser/:id",
   auth.verifyUser,
-  auth.verifyAdmin,
-  profile.showAllUser
+  profile.deleteUser
 );
+
 
 router.get(
   "/clientProfile",
@@ -27,14 +33,11 @@ router.get(
   profile.showProfileFreelancer
 );
 
-
-
 router.put(
   "/profile/editProfileClient/:id",
   auth.verifyUser,
   profile.editProfileClient
 );
-
 
 router.put(
   "/profile/editProfileFreelancer/:id",
@@ -48,7 +51,5 @@ router.put(
   uploadPdf.single("resume"),
   profile.editResume
 );
-
-
 
 module.exports = router;

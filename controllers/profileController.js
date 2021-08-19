@@ -1,20 +1,32 @@
 const user = require("../models/user");
 
 class profileController {
-
-
-  showAllUser(req, res){
-    user.find()
-    .then(function(data){
-      res.status(200).json(data);
-    })
-    .catch(function(err){
-      res.status(500).json({ message: err });
-    })
+  showAllUser(req, res) {
+    user
+      .find()
+      .then(function (data) {
+        res.status(200).json(data);
+      })
+      .catch(function (err) {
+        res.status(500).json({ message: err });
+      });
   }
 
 
-
+  deleteUser(req, res) {
+    const id = req.params.id;
+    user
+      .findOneAndDelete({_id:id})
+      .then(function (data) {
+        res.status(200).json(data);
+        console.log("deleted successfully");
+      })
+      .catch(function (e) {
+        res.status(500).json({ message: e });
+      });
+  }
+  
+  
   showProfileClient(req, res) {
     const id = req.user;
     user
@@ -40,7 +52,6 @@ class profileController {
         res.status(500).json({ message: err });
       });
   }
-  
 
   ////edit
   editProfileClient(req, res) {
