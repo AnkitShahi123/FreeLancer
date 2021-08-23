@@ -1,6 +1,20 @@
 const user = require("../models/user");
 
 class profileController {
+
+
+  showAllUser(req, res){
+    user.find()
+    .then(function(data){
+      res.status(200).json(data);
+    })
+    .catch(function(err){
+      res.status(500).json({ message: err });
+    })
+  }
+
+
+
   showProfileClient(req, res) {
     const id = req.user;
     user
@@ -26,6 +40,7 @@ class profileController {
         res.status(500).json({ message: err });
       });
   }
+  
 
   ////edit
   editProfileClient(req, res) {

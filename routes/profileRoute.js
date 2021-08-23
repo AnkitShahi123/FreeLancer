@@ -8,6 +8,13 @@ const profileController = require("../controllers/profileController");
 const profile = new profileController();
 
 router.get(
+  "/allUser",
+  auth.verifyUser,
+  auth.verifyAdmin,
+  profile.showAllUser
+);
+
+router.get(
   "/clientProfile",
   auth.verifyUser,
   auth.verifyClient,
