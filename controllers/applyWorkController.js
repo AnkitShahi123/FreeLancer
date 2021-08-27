@@ -5,12 +5,23 @@ const applyWorkControllers = require("../controllers/applyWorkController");
 
 class applyWorkController {
   applywork(req, res) {
+
+
+
+    if (req.file == undefined) {
+      console.log("routed here");
+      return res.status();
+    }
     const userid = req.user;
     const workid = req.params.id;
     const myamount = req.body.myamount;
+    const path = req.file.path;
+
+    
     const workdata = new applywork({
       userid: userid,
       workid: workid,
+      video: path,
       myamount: myamount,
     });
     workdata
@@ -79,8 +90,8 @@ class applyWorkController {
     applywork
       .find({
         workid: workid,
-      }).populate('userid')
-      .populate('workid')
+      }).populate('userid workid')
+      
       .then(function (data) {
         res.status(200).json(data);
       })

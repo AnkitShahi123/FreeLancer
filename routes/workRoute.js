@@ -31,7 +31,7 @@ router.put("/work/update/:id", auth.verifyUser, work.updatework);
 router.get("/work/showall", function (req, res) {
   works
     .find()
-    .populate("creator")
+    .populate('creator')
     .then(function (data) {
       res.status(200).json(data);
     })
@@ -45,7 +45,12 @@ router.get("/work/showSingle/:id", work.getSinglework);
 router.get("/work/search/:name", work.getSearchwork);
 
 //////////////////////applyyy
-router.post("/work/applyWork/:id", auth.verifyUser, workapply.applywork);
+router.post(
+  "/work/applyWork/:id",
+  uploadvideo.single("video"),
+  auth.verifyUser,
+  workapply.applywork
+);
 
 router.get("/work/showStatus/:id", auth.verifyUser, workapply.showStatus);
 
@@ -57,19 +62,11 @@ router.delete(
   workapply.deleteMyApplied
 );
 
-router.get(
-  "/work/showMyListings",
-  auth.verifyUser,
-  work.showMyListings
-);
+router.get("/work/showMyListings", auth.verifyUser, work.showMyListings);
 
-router.delete(
-  "/work/delete/:pid",
-  auth.verifyUser,
-  work.deletework
-);
+router.delete("/work/delete/:pid", auth.verifyUser, work.deletework);
 
-router.put("/work/update/:id", auth.verifyUser,work.updatework);
+router.put("/work/update/:id", auth.verifyUser, work.updatework);
 
 router.get(
   "/work/showWhoApplied/:id",
@@ -77,20 +74,12 @@ router.get(
   workapply.showWhoApplied
 );
 
-router.put(
-  "/work/approvework/:id",
-  auth.verifyUser,
-  workapply.approvework
-);
+router.put("/work/approvework/:id", auth.verifyUser, workapply.approvework);
 
 ////////////////////////saved works routess
 router.post("/work/saveWork/:id", auth.verifyUser, worksave.saveWork);
 
-router.get(
-  "/work/showMySaved",
-  auth.verifyUser,
-  worksave.showMySaved
-);
+router.get("/work/showMySaved", auth.verifyUser, worksave.showMySaved);
 
 router.delete(
   "/work/deleteMySaved/:id",
@@ -104,17 +93,12 @@ router.put(
   auth.verifyUser,
   workapply.startWorkTimer
 );
-router.put(
-  "/work/stopworktimer/:id",
-  auth.verifyUser,
-  workapply.stopWorkTimer
-);
+router.put("/work/stopworktimer/:id", auth.verifyUser, workapply.stopWorkTimer);
 
 router.get("/work/showMyStarted", function (req, res) {
   apply
-    .find(
-      {timerStatus:"Started"}
-    )
+    .find({ timerStatus: "Started" })
+    .populate("workid")
     .then(function (data) {
       res.status(200).json(data);
     })
@@ -125,9 +109,7 @@ router.get("/work/showMyStarted", function (req, res) {
 
 router.get("/work/showMyStopped", function (req, res) {
   apply
-    .find(
-      {timerStatus:"Stopped"}
-    )
+    .find({ timerStatus: "Stopped" }).populate("userid workid")
     .then(function (data) {
       res.status(200).json(data);
     })
@@ -138,10 +120,8 @@ router.get("/work/showMyStopped", function (req, res) {
 
 router.get("/work/showCompletedFreelancers", function (req, res) {
   apply
-    .find(
-      {timerStatus:"Stopped"}
-    )
-    .populate("userid")
+    .find({ timerStatus: "Stopped" })
+    .populate("userid workid")
     .then(function (data) {
       res.status(200).json(data);
     })
@@ -150,24 +130,22 @@ router.get("/work/showCompletedFreelancers", function (req, res) {
     });
 });
 
-
 router.post("/work/reportWork/:id", auth.verifyUser, workreport.reportWork);
 
-router.get(
-  "/work/showMyreported",
-  auth.verifyUser,
-  workreport.showMyReported
-);
+router.get("/work/showMyreported", auth.verifyUser, workreport.showMyReported);
 
 ///approve reported work
-router.put("/work/approveThisWork/:id", auth.verifyUser, workreport.approveThisWork);
+router.put(
+  "/work/approveThisWork/:id",
+  auth.verifyUser,
+  workreport.approveThisWork
+);
 
 //// update report after performing an action
-router.put("/work/afterReportAction/:id", auth.verifyUser, workreport.afterReportAction);
-
-
-
-
-
+router.put(
+  "/work/afterReportAction/:id",
+  auth.verifyUser,
+  workreport.afterReportAction
+);
 
 module.exports = router;
