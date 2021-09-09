@@ -58,6 +58,7 @@ const user = mongoose.model("user", {
   },
   resume: {
     type: String,
+    default: "images\resume123",
   },
   createdAt: {
     type: Date,

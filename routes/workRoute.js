@@ -6,7 +6,6 @@ const report = require("../models/report");
 const { check, validationResult } = require("express-validator");
 const auth = require("../middleware/auth");
 const upload = require("../middleware/uploads");
-const uploadvideo = require("../middleware/uploadVideo");
 const workController = require("../controllers/workPostController");
 const applyWorkController = require("../controllers/applyWorkController");
 const saveWorkController = require("../controllers/saveWorkController");
@@ -47,7 +46,7 @@ router.get("/work/search/:name", work.getSearchwork);
 //////////////////////applyyy
 router.post(
   "/work/applyWork/:id",
-  uploadvideo.single("video"),
+  upload.single("video"),
   auth.verifyUser,
   workapply.applywork
 );
